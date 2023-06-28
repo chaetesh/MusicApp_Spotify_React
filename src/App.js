@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import Login from "./components/Login";
+import { useStateProvider } from "./utils/StateProvider";
+import { reducerCases } from "./utils/Constants";
+import Music from "./components/Music";
 
-function App() {
+const App = () => {
+  const [{ token }, dispatch] = useStateProvider();
+
+  useEffect(() => {
+    const url = window.location.hash;
+    const token = url.substring(1).split("&")[0].split("=")[1];
+    dispatch({type: reducerCases.SET_TOKEN,token});
+  }, [token,dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {token? <Music></Music> : <Login></Login>}
     </div>
   );
-}
+};
 
 export default App;
