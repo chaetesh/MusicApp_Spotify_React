@@ -1,4 +1,7 @@
 
+## Demo
+
+https://master--sparkling-starburst-fe46de.netlify.app/
 # Music App using Spotify API with React
 This project is a music player that uses the Spotify API. It allows users to search for songs, albums, and artists, and then play them back.
 The purpose of this project is to learn how to use the Spotify API with React. It is also a way to create a useful and interactive music player for users.
